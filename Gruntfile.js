@@ -3,9 +3,7 @@
 module.exports = function(grunt) {
 
   // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-jade');
-  grunt.loadNpmTasks('grunt-contrib-clean');
+  require('load-grunt-tasks')(grunt);
 
   // Project configuration.
   grunt.initConfig({
