@@ -1,0 +1,19 @@
+{
+  "name": "my_grunt",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ebrengle/my_grunt",
+  "authors": [
+    "Eric Brengle <eric.brengle@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~3.3.0"
+  }
+}
