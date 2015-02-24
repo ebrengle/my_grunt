@@ -18,6 +18,9 @@ module.exports = function(grunt) {
     },
     jade: {
       compile: {
+        options: {
+          pretty: true
+        },
         files: [{expand: true, cwd: 'app/', src: ['**/*.jade', '!**/_*.jade'], dest: 'public/', ext: '.html'}]
       }
     },
@@ -32,6 +35,10 @@ module.exports = function(grunt) {
         }
     },
     watch: {
+      bower: {
+        files: ['bower.json'],
+        tasks: ['wiredep']
+      },
       other: {
         files: ['app/**', '!app/**/*.jade', '!app/**/*.{sass,scss}'],
         tasks: ['copy']
@@ -45,12 +52,33 @@ module.exports = function(grunt) {
         tasks: ['sass']
       },
     },
+    wiredep: {
+      build: {
+        src: ['public/**/*.html']
+      }
+    },
+    autoprefixer: {
+      options: {
+        // Task-specific options go here.
+        browsers: ['last 2 versions', 'ie 8', 'ie 9'],
+      },
+      your_target: {
+        // Target-specific file lists and/or options go here.
+      },
+      single_file: {
+        options: {
+          // Target-specific options go here.
+        },
+        src: 'public/css/main.css',
+        dest: 'public/css/main.css'
+      },
 
-
-  });
+    },
+ });
 
   // Default task(s).
   grunt.registerTask('default', []);
-  grunt.registerTask('build', ['clean', 'copy', 'jade', 'sass']);
+  grunt.registerTask('build', ['clean', 'copy', 'jade', 'sass', 'wiredep']);
   grunt.registerTask('serve', ['build', 'watch']);
+  grunt.registerTask('filter', ['autoprefixer']);
 };
