@@ -31,32 +31,14 @@ module.exports = function(grunt) {
             }
         }
     },
-    connect: {
-      options: {
-        port: 3333,
-        base: 'public',
-        hostname: 'localhost',
-        livereload: 35729
-      },
-      server: {
-        open: true
-      }
-    },
     watch: {
-      livereload: {
-        options: { livereload: true },
-        files: ['public/**/*']
-      },
       jade: {
         files: ['app/**/*.jade'],
-        tasks: ['jade'],
-        options: {
-          reload: true,
-        }
+        tasks: ['jade']
       },
       sass: {
         files: ['app/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass'],
+        tasks: ['sass']
       },
     },
 
@@ -66,5 +48,5 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('default', []);
   grunt.registerTask('build', ['clean', 'copy', 'jade', 'sass']);
-  grunt.registerTask('serve', ['build', 'connect:server', 'watch']);
+  grunt.registerTask('serve', ['build', 'watch']);
 };
